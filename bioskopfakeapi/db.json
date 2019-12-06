@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "username": "dobleh",
+      "password": "qwe"
+    },
+    {
+      "id": 3,
+      "username": "jamal",
+      "password": "1234"
+    }
+  ],
+  "movies": [
+    {
+      "id": 1,
+      "title": "Jumanji: The Next Level",
+      "sutradara": "Jake Kasdan",
+      "durasi": 121,
+      "jadwal": [
+        9,
+        12,
+        16
+      ],
+      "sinopsis": "Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji, keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah. Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
+      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157422945871583_287x421.jpg",
+      "genre": "Action",
+      "produksi": "Columbia Pictures"
+    },
+    {
+      "id": 2,
+      "title": "Jumanji: The Next Level",
+      "sutradara": "Jake Kasdan",
+      "durasi": 121,
+      "jadwal": [
+        9,
+        12,
+        16
+      ],
+      "sinopsis": "Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji, keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah. Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
+      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157422945871583_287x421.jpg",
+      "genre": "Action",
+      "produksi": "Columbia Pictures"
+    },
+    {
+      "title": "Darah Daging",
+      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/15743293802147_287x421.jpg",
+      "sinopsis": "Seberapa besar pengorbanan yang bisa Anda berikan untuk menyelamatkan Ibu yang telah merawat Anda dari kecil? Pertanyaan tersebut dibuktikan ketiga bersaudara: ARYA (Ario Bayu), RAHMAT (Rangga Nattra) dan FIKRI (Arnold Leonard) dengan melakukan perampokan bank, mereka mengajak sahabat Rahmat dari kecil, SALIM (Donny Alamsyah) ikut serta pula BORNE (Tanta Ginting), Perampokan tersebut tidak berlangsung sesuai rencana dan mengakibatkan SALIM ditangkap dan dihukum.  12 tahun berlalu, SALIM yang dijatuhi hukuman mati kedatangan seorang penulis perempuan, HANNA (Estelle Linden) yang tertarik mengangkat kisah perampokan tersebut ke dalam sebuah novel.",
+      "sutradara": "bebas",
+      "genre": "horoor",
+      "durasi": "123",
+      "produksi": "RANS ENTERTAINMENT",
+      "jadwal": [
+        12,
+        14,
+        20
+      ],
+      "id": 3
+    }
+  ]
+}
