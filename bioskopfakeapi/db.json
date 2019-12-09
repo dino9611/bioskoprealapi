@@ -16,6 +16,23 @@
       "password": "1234"
     }
   ],
+  "studios": [
+    {
+      "id": 1,
+      "nama": "Studio 1",
+      "jumlahKursi": 260
+    },
+    {
+      "id": 2,
+      "nama": "Studio 2",
+      "jumlahKursi": 240
+    },
+    {
+      "id": 3,
+      "nama": "Studio 3",
+      "jumlahKursi": 200
+    }
+  ],
   "movies": [
     {
       "id": 1,
@@ -23,29 +40,34 @@
       "sutradara": "Jake Kasdan",
       "durasi": 121,
       "jadwal": [
-        9,
         12,
+        14,
         16
       ],
       "sinopsis": "Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji, keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah. Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
       "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157422945871583_287x421.jpg",
       "genre": "Action",
-      "produksi": "Columbia Pictures"
+      "studioId": 3,
+      "produksi": "Columbia Pictures",
+      "trailer": ""
     },
     {
-      "id": 2,
-      "title": "Jumanji: The Next Level",
-      "sutradara": "Jake Kasdan",
-      "durasi": 121,
+      "title": "Last Christmas",
+      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157285280844221_287x421.jpg",
+      "sinopsis": "Kate (Emilia Clarke) adalah seorang wanita muda yang mengambil keputusan buruk. Kencan terakhirnya berakhir dengan bencana? Saat diterima di sebuah toko pernak-pernik natal dan berperan sebagai Peri ia bertemu dengan Tom (Henry Golding), Hidupnya berubah lagi. Bagi Kate, sepertinya terlalu bagus untuk menjadi kenyataan.",
+      "sutradara": "Paul Feig",
+      "genre": "Romance",
+      "durasi": "103",
+      "produksi": "RANS ENTERTAINMENT",
       "jadwal": [
-        9,
         12,
-        16
+        14,
+        16,
+        20
       ],
-      "sinopsis": "Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji, keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah. Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
-      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157422945871583_287x421.jpg",
-      "genre": "Action",
-      "produksi": "Columbia Pictures"
+      "trailer": "https://www.youtube.com/embed/z9CEIcmWmtA",
+      "studioId": "2",
+      "id": 2
     },
     {
       "title": "Darah Daging",
@@ -60,7 +82,11 @@
         14,
         20
       ],
+      "studioId": 1,
+      "trailer": "",
       "id": 3
     }
-  ]
+  ],
+  "orders": [],
+  "ordersDetails": []
 }
