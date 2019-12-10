@@ -35,23 +35,6 @@
   ],
   "movies": [
     {
-      "id": 1,
-      "title": "Jumanji: The Next Level",
-      "sutradara": "Jake Kasdan",
-      "durasi": 121,
-      "jadwal": [
-        12,
-        14,
-        16
-      ],
-      "sinopsis": "Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji, keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah. Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
-      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157422945871583_287x421.jpg",
-      "genre": "Action",
-      "studioId": 3,
-      "produksi": "Columbia Pictures",
-      "trailer": ""
-    },
-    {
       "title": "Last Christmas",
       "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157285280844221_287x421.jpg",
       "sinopsis": "Kate (Emilia Clarke) adalah seorang wanita muda yang mengambil keputusan buruk. Kencan terakhirnya berakhir dengan bencana? Saat diterima di sebuah toko pernak-pernik natal dan berperan sebagai Peri ia bertemu dengan Tom (Henry Golding), Hidupnya berubah lagi. Bagi Kate, sepertinya terlalu bagus untuk menjadi kenyataan.",
@@ -82,11 +65,91 @@
         14,
         20
       ],
-      "studioId": 1,
-      "trailer": "",
+      "trailer": "https://www.youtube.com/embed/XG__1TjYjI4",
+      "studioId": "1",
+      "id": 3
+    },
+    {
+      "title": "Jumanji: The Next Level",
+      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157422945871583_287x421.jpg",
+      "sinopsis": "Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji, keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah. Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
+      "sutradara": "bobi",
+      "genre": "adventure",
+      "durasi": "123",
+      "produksi": "RANS ENTERTAINMENT",
+      "jadwal": [
+        12,
+        14,
+        16
+      ],
+      "trailer": "https://www.youtube.com/embed/rBxcF-r9Ibs",
+      "studioId": "1",
+      "id": 4
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "movieId": 3,
+      "studioId": 3,
+      "jadwal":12,
+      "totalHarga": 50000
+    },
+    {
+      "userId": 1,
+      "movieId": 3,
+      "studioId": 2,
+      "jadwal": 12,
+      "totalHarga": 70000,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "movieId": 3,
+      "studioId": 2,
+      "jadwal": 12,
+      "totalHarga": 105000,
       "id": 3
     }
   ],
-  "orders": [],
-  "ordersDetails": []
+  "ordersDetails": [
+    {
+      "id": 1,
+      "orderId": 1,
+      "row": 2,
+      "seat": 4
+    },
+    {
+      "id": 2,
+      "orderId": 1,
+      "row": 2,
+      "seat": 5
+    },
+    {
+      "id": 2,
+      "orderId": 2,
+      "row": 2,
+      "seat": 6
+    },
+    {
+      "id": 2,
+      "orderId": 2,
+      "row": 2,
+      "seat":7
+    },
+    {
+      "id": 2,
+      "orderId": 3,
+      "row": 2,
+      "seat": 8
+    },
+    {
+      "id": 2,
+      "orderId": 3,
+      "row": 2,
+      "seat":9
+    }
+
+  ]
 }

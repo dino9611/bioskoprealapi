@@ -4,6 +4,7 @@ import {Table,TableBody,TableHead,TableCell,TableRow} from '@material-ui/core'
 import { APIURL } from '../support/ApiUrl';
 import {Modal,ModalBody,ModalFooter,ModalHeader} from 'reactstrap'
 import Fade from 'react-reveal/Fade'
+import {Route,Link,Switch} from 'react-router-dom'
 
 
 
@@ -76,7 +77,7 @@ class ManageAdmin extends Component {
         var jadwaltemplate=[12,14,16,18,20]
         var jadwal=[]
         for(var i=0;i<jadwaltemplate.length;i++){
-            if(this.refs[`editjadwal${i}`].checked){
+            if(this.refs[`jadwal${i}`].checked){
                 jadwal.push(jadwaltemplate[i])
             }
         }
@@ -212,7 +213,7 @@ class ManageAdmin extends Component {
         }
         return (
             <div className='mx-3'>
-                    <Modal isOpen={this.state.modaledit} toggle={()=>this.setState({modaledit:false})}>
+                <Modal isOpen={this.state.modaledit} toggle={()=>this.setState({modaledit:false})}>
                     <ModalHeader>
                         Edit Data {datafilm[indexedit].title}
                     </ModalHeader>
@@ -287,8 +288,39 @@ class ManageAdmin extends Component {
                         </TableBody>
                     </Table>
                 </Fade>
+                <div>
+                    <Link to='/manageadmin/test'>test2</Link>
+                </div>
+                <div>
+                    
+                        <Switch>
+                            <Route to='/manageadmin' component={test} exact />
+                            <Route to='/manageadmin/:test' component={test2}/>
+                        </Switch>
+                    
+                </div>
             </div>
         );
+    }
+}
+class test extends Component {
+    state = {  }
+    render() { 
+        return (
+            <div>
+                test1
+            </div>
+          );
+    }
+}
+class test2 extends Component {
+    state = {  }
+    render() { 
+        return (
+            <div>
+                {this.props.match.params}
+            </div>
+          );
     }
 }
  

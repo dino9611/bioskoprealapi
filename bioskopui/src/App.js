@@ -5,6 +5,8 @@ import './App.css';
 import {Switch,Route} from 'react-router-dom'
 import ManageAdmin from './pages/manageadmin'
 import Login from './pages/login'
+import Moviedetail from './pages/movie-detail'
+import Belitiket from './pages/belitiket'
 import {connect} from 'react-redux'
 import {LoginSuccessAction} from './redux/actions'
 import Axios from 'axios';
@@ -21,9 +23,11 @@ class App extends Component{
     Axios.get(`${APIURL}users/${id}`)
     .then((res)=>{
       this.props.LoginSuccessAction(res.data)
-      this.setState({loading:false})
     }).catch((err)=>{
       console.log(err)
+    })
+    .finally(()=>{
+      this.setState({loading:false})
     })
   }
 
@@ -39,9 +43,11 @@ class App extends Component{
           <Route path={'/'} exact>
             <Home/>
           </Route>
-          <Route path={'/manageadmin'} exact>
+          <Route path={'/manageadmin'} exact >
             <ManageAdmin/>
-          </Route>
+          </Route>          
+          <Route path='/moviedetail/:id' component={Moviedetail} exact />
+          <Route path='/belitiket' component={Belitiket} exact/>
           <Route path={'/login'} exact component={Login}/>
         </Switch>
       </div>
