@@ -13,6 +13,7 @@ import {
 } from 'reactstrap';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {FaCartArrowDown} from 'react-icons/fa'
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,8 +27,11 @@ const Header = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem className='mr-2'>
+            <NavItem className='mr-2 pt-2'>
               <Link to={'/manageadmin'}>manageadmin</Link>
+            </NavItem>
+            <NavItem className='mr-2 pt-2'>
+              <Link to={'/cart'}><FaCartArrowDown style={{color:'pink', fontSize:28}}/></Link>
             </NavItem>
             {props.namauser===''?
               <NavItem>
