@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import Axios from 'axios'
 import {connect} from 'react-redux'
-import {Table,ModalHeader,ModalBody,ModalFooter} from 'reactstrap'
+import {Table,ModalHeader,ModalBody,ModalFooter,Modal} from 'reactstrap'
 import {APIURL} from './../support/ApiUrl'
-
-
+import Numeral from 'numeral'
 
 class Cart extends Component {
     state = {
-        datacart:null
+        datacart:null,
+        indexdetail:0,
+        modaldetail:false
+        
     }
 
     componentDidMount(){
@@ -43,6 +45,87 @@ class Cart extends Component {
             console.log(err)
         })
     }
+    onbtnCheckOut=()=>{
+        var userId=this.props.UserId
+        var datacart=this.state.datacart
+        var harga=0
+        this.state.datacart.forEach((val)=>{
+            harga+=val.qty.length*25000
+        })
+        var today=new Date()
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = dd + '/' + mm + '/' + yyyy;
+        var ubahdata=[]
+        datacart.forEach((val)=>{
+            ubahdata.push(Axios.patch(`${APIURL}orders/${val.id}`,{bayar:true}))
+        })
+        Axios.all(ubahdata)
+        .then(res=>{
+            Axios.post(`${APIURL}transactions`,{
+                userId,
+                totalharga:harga,
+                today
+            })
+            .then((res1)=>{
+                var transactionsdetails=[]
+                datacart.forEach((val)=>{
+                    transactionsdetails.push({
+                        transactionId:res1.data.id,
+                        orderId:val.id
+                    })
+                })
+                var transactionsdetails2=[]
+                transactionsdetails.forEach((val)=>{
+                    transactionsdetails2.push(Axios.post(`${APIURL}transactionsDetails`,val))
+                })
+                Axios.all(transactionsdetails2)
+                .then((res2)=>{
+                    console.log(res2)
+                    // this.setState({openmodalcart:true})
+                }).catch((err)=>{
+                    console.log(err)
+                })
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }).catch(err=>{
+
+        })
+        // .then((res)=>{
+        //     console.log(res.data.id)
+        //     var dataordersdetail=[]
+        //     pilihan.forEach((val)=>{
+        //         dataordersdetail.push({
+        //             orderId:res.data.id,
+        //             seat:val.seat,
+        //             row:val.row
+        //         })
+        //     })
+        //     console.log(dataordersdetail)
+        //     var dataordersdetail2=[]
+        //     dataordersdetail.forEach((val)=>{
+        //         dataordersdetail2.push(Axios.post(`${APIURL}ordersDetails`,val))
+        //     })
+        //     Axios.all(dataordersdetail2)
+        //     .then((res1)=>{
+        //         console.log(res1)
+        //         this.setState({openmodalcart:true})
+        //     }).catch((err)=>{
+        //         console.log(err)
+        //     })
+        // }).catch((err)=>{
+        //     console.log(err)
+        // })
+    }
+    rendertotalharga=()=>{
+        var harga=0
+        this.state.datacart.forEach((val)=>{
+            harga+=val.qty.length*25000
+        })
+        return 'Rp.'+Numeral(harga).format('0,0.00')
+    }
     renderCart=()=>{
         if(this.state.datacart!==null){
             if(this.state.datacart.length===0){
@@ -57,7 +140,8 @@ class Cart extends Component {
                         <td style={{width:300}}>{val.movie.title}</td>
                         <td style={{width:100}}>{val.jadwal}</td>
                         <td style={{width:100}}>{val.qty.length}</td>
-                        <td style={{width:100}}><button>Details</button></td>
+                        <td style={{width:100}}>{'Rp.'+Numeral(val.qty.length*25000).format('0,0.00')}</td>
+                        <td style={{width:100}}><button className='btn btn-primary' onClick={()=>this.setState({ indexdetail:index,modaldetail:true})} >Details</button></td>
                     </tr>
                 )
             })
@@ -67,6 +151,42 @@ class Cart extends Component {
         if(this.props.UserId){
             return (
                 <div>
+                    <Modal isOpen={this.state.modaldetail}  toggle={()=>this.setState({modaldetail:false})}>
+                        <ModalHeader>
+                            Details
+                        </ModalHeader>
+                        <ModalBody>
+                            <Table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        No.
+                                    </th>
+                                    <th>
+                                        Bangku
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.datacart!==null &&this.state.datacart.length!==0 ?
+                                    this.state.datacart[this.state.indexdetail].qty.map((val,index)=>{
+                                        return (
+                                            <tr key={index}>
+                                                <td>{index+1}</td>
+                                                <td>{'abcdefghijklmnopqrstuvwxyz'.toUpperCase()[val.row]+(val.seat+1)}</td>
+                                            </tr>
+                                        )
+                                    })
+                                    :
+                                    null
+                                }
+                            </tbody>
+                            </Table>
+                        </ModalBody>
+                        <ModalFooter>
+                            <button className='btn btn-primary' onClick={()=>this.setState({modaldetail:false})}>Close</button>
+                        </ModalFooter>
+                    </Modal>
                     <center>
                         <Table style={{width:600}}>
                             <thead>
@@ -74,17 +194,27 @@ class Cart extends Component {
                                     <th style={{width:100}}>No.</th>
                                     <th style={{width:300}}>Title</th>
                                     <th style={{width:100}}>Jadwal</th>
-                                    <th style={{width:100}}>jumlah</th>
+                                    <th style={{width:100}}>Jumlah</th>
+                                    <th style={{width:100}}>Harga</th>
                                     <th style={{width:100}}>Detail</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.renderCart()}
                             </tbody>
-                            <tfoot>
-                                <button>checkout</button>
-                            </tfoot>
+                          
+                    
                         </Table>
+                        <div className='d-flex justify-content-between 'style={{paddingLeft:'30%',paddingRight:'37.5%'}}>
+                            <div >
+                                <button className='btn btn-success' onClick={this.onbtnCheckOut}>checkout</button> 
+                            </div>
+                            <div  className='float-right'>
+                                Total Harga &nbsp;
+                                {this.state.datacart?this.rendertotalharga():null}
+                            </div>
+
+                        </div>
                     </center>
                 </div>
               );

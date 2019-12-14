@@ -27,8 +27,8 @@ const Header = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem className='mr-2 pt-2'>
-              <Link to={'/manageadmin'}>manageadmin</Link>
+            <NavItem className='mr-2 pt-1'>
+              <Link to={'/manageadmin'}><button className='btn btn-outline-primary'>Manage admin</button></Link>
             </NavItem>
             <NavItem className='mr-2 pt-2'>
               <Link to={'/cart'}><FaCartArrowDown style={{color:'pink', fontSize:28}}/></Link>

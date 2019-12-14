@@ -3,17 +3,20 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "role": "admin"
     },
     {
       "id": 2,
       "username": "dobleh",
-      "password": "qwe"
+      "password": "qwe",
+      "role": "user"
     },
     {
       "id": 3,
       "username": "jamal",
-      "password": "1234"
+      "password": "1234",
+      "role": "user"
     }
   ],
   "studios": [
@@ -102,7 +105,7 @@
       "jadwal": 12,
       "totalHarga": 50000,
       "id": 2,
-      "bayar": false
+      "bayar": true
     },
     {
       "userId": 2,
@@ -117,7 +120,7 @@
       "movieId": 3,
       "totalharga": 50000,
       "jadwal": 12,
-      "bayar": false,
+      "bayar": true,
       "id": 4
     },
     {
@@ -125,7 +128,7 @@
       "movieId": 3,
       "totalharga": 50000,
       "jadwal": 12,
-      "bayar": false,
+      "bayar": true,
       "id": 5
     },
     {
@@ -133,7 +136,7 @@
       "movieId": 3,
       "totalharga": 50000,
       "jadwal": 14,
-      "bayar": false,
+      "bayar": true,
       "id": 6
     },
     {
@@ -141,8 +144,16 @@
       "movieId": 2,
       "totalharga": 50000,
       "jadwal": 12,
-      "bayar": false,
+      "bayar": true,
       "id": 7
+    },
+    {
+      "userId": 3,
+      "movieId": 3,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 8
     }
   ],
   "ordersDetails": [
@@ -229,8 +240,52 @@
       "seat": 9,
       "row": 0,
       "id": 14
+    },
+    {
+      "orderId": 8,
+      "seat": 0,
+      "row": 0,
+      "id": 15
     }
   ],
-  "transactions": [],
-  "transactionsDetails": []
+  "transactions": [
+    {
+      "userId": 3,
+      "totalharga": 275000,
+      "today": "14/12/2019",
+      "id": 1
+    }
+  ],
+  "transactionsDetails": [
+    {
+      "transactionId": 1,
+      "orderId": 2,
+      "id": 1
+    },
+    {
+      "transactionId": 1,
+      "orderId": 4,
+      "id": 2
+    },
+    {
+      "transactionId": 1,
+      "orderId": 6,
+      "id": 3
+    },
+    {
+      "transactionId": 1,
+      "orderId": 7,
+      "id": 4
+    },
+    {
+      "transactionId": 1,
+      "orderId": 5,
+      "id": 5
+    },
+    {
+      "transactionId": 1,
+      "orderId": 8,
+      "id": 6
+    }
+  ]
 }

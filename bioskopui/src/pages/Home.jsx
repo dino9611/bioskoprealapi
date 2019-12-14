@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios'
 import {Link} from 'react-router-dom'
-
 const url='http://localhost:2000/'
 
 class Home extends Component {
@@ -20,7 +19,7 @@ class Home extends Component {
     renderMovies=()=>{
         return this.state.dataMovies.map((val,index)=>{
             return (
-                    <div key={index} className="col-md-3 py-5 pr-3 pl-1 ">
+                    <div key={index}  className="col-md-3 py-5 pr-3 pl-1 ">
                         <div className="card kartu " style={{width: '100%'}}>
                             <div className="gambaar1">
                                 <Link to={'/moviedetail/'+val.id}>

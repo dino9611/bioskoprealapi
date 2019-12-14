@@ -18,7 +18,7 @@ class Belitiket extends Component {
         openmodalcart:false,
         redirecthome:false
     }
-
+    
     componentDidMount(){
         this.onJamchange()
     }
