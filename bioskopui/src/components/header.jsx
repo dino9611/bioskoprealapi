@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {
   Collapse,
   Navbar,
@@ -14,7 +14,7 @@ import {
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {FaCartArrowDown} from 'react-icons/fa'
-
+dsaasds
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,20 +27,42 @@ const Header = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem className='mr-2 pt-1'>
-              <Link to={'/manageadmin'}><button className='btn btn-outline-primary'>Manage admin</button></Link>
-            </NavItem>
-            <NavItem className='mr-2 pt-2'>
-              <Link to={'/cart'}><FaCartArrowDown style={{color:'pink', fontSize:28}}/></Link>
-            </NavItem>
-            {props.namauser===''?
-              <NavItem>
-                <Link to={'/login'}>Login</Link>
+          { 
+              props.Auth.role==='user'?
+                null
+              :
+              props.Auth.username===''?
+                null
+              : 
+              <NavItem className='mr-2 pt-1'>
+                <Link to={'/manageadmin'}><button className='btn btn-outline-primary'>Manage admin</button></Link>
+              </NavItem>
+            }
+            
+            { props.Auth.role==='user'?
+              <NavItem className='mr-2 pt-1'>
+                <Link to={'/history'}><button className='btn btn-outline-primary'>History</button></Link>
               </NavItem>
               :
               null
             }
-              {
+          {
+            props.Auth.role==='user'?
+            <NavItem className='mr-2 pt-2'>
+              <Link to={'/cart'}><FaCartArrowDown style={{color:'pink', fontSize:28}}/></Link>
+            </NavItem>
+            :
+            null
+          }
+            {props.namauser===''?
+              <NavItem className='mr-2 pt-1'>
+                <Link to={'/login'}><button className='btn btn-outline-primary'>Login</button></Link>
+              </NavItem>
+              :
+              null
+            }
+           
+           {
                 props.namauser===''?
                 null
                 :
@@ -69,10 +91,11 @@ const Header = (props) => {
     </div>
   );
 }
+
 const MapstateToprops=(state)=>{
   return{
-      namauser:state.Auth.username
-
+    namauser:state.Auth.username,
+    Auth:state.Auth
   }
 }
 export default connect(MapstateToprops) (Header);

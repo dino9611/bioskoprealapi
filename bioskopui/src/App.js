@@ -8,6 +8,7 @@ import Login from './pages/login'
 import Moviedetail from './pages/movie-detail'
 import Belitiket from './pages/belitiket'
 import Cart from './pages/cart'
+import History from './pages/history'
 import {connect} from 'react-redux'
 import {LoginSuccessAction} from './redux/actions'
 import Axios from 'axios';
@@ -50,6 +51,7 @@ class App extends Component{
           <Route path='/moviedetail/:id' component={Moviedetail} exact />
           <Route path='/belitiket' component={Belitiket} exact/>
           <Route path='/cart' component={Cart} exact/>
+          <Route path='/history' component={History} exact/>
           <Route path={'/login'} exact component={Login}/>
         </Switch>
       </div>

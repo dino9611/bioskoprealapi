@@ -97,7 +97,7 @@
       "movieId": 3,
       "jadwal": 12,
       "totalHarga": 50000,
-      "bayar": false
+      "bayar": true
     },
     {
       "userId": 3,
@@ -113,7 +113,7 @@
       "jadwal": 14,
       "totalHarga": 50000,
       "id": 3,
-      "bayar": false
+      "bayar": true
     },
     {
       "userId": 3,
@@ -254,38 +254,70 @@
       "totalharga": 275000,
       "today": "14/12/2019",
       "id": 1
+    },
+    {
+      "userId": 2,
+      "totalharga": 100000,
+      "today": "14/12/2019",
+      "id": 2
     }
   ],
   "transactionsDetails": [
     {
       "transactionId": 1,
       "orderId": 2,
+      "titlefilm": "Darah Daging",
+      "qty": 2,
       "id": 1
     },
     {
       "transactionId": 1,
+      "titlefilm": "Darah Daging",
+      "qty": 2,
       "orderId": 4,
       "id": 2
     },
     {
       "transactionId": 1,
+      "titlefilm": "Darah Daging",
+      "qty": 2,
       "orderId": 6,
       "id": 3
     },
     {
       "transactionId": 1,
+      "titlefilm": "Darah Daging",
+      "qty": 2,
       "orderId": 7,
       "id": 4
     },
     {
       "transactionId": 1,
+      "titlefilm": "Darah Daging",
+      "qty": 2,
       "orderId": 5,
       "id": 5
     },
     {
       "transactionId": 1,
       "orderId": 8,
+      "titlefilm": "Darah Daging",
+      "qty": 1,
       "id": 6
+    },
+    {
+      "transactionId": 2,
+      "orderId": 1,
+      "titlefilm": "Darah Daging",
+      "qty": 2,
+      "id": 7
+    },
+    {
+      "transactionId": 2,
+      "orderId": 3,
+      "titlefilm": "Darah Daging",
+      "qty": 2,
+      "id": 8
     }
   ]
 }

@@ -66,14 +66,16 @@ class Cart extends Component {
             Axios.post(`${APIURL}transactions`,{
                 userId,
                 totalharga:harga,
-                today
+                tanggal:today
             })
             .then((res1)=>{
                 var transactionsdetails=[]
                 datacart.forEach((val)=>{
                     transactionsdetails.push({
                         transactionId:res1.data.id,
-                        orderId:val.id
+                        orderId:val.id,
+                        titlefilm:val.movie.title,
+                        qty:val.qty.length
                     })
                 })
                 var transactionsdetails2=[]

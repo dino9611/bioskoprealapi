@@ -12,6 +12,7 @@
 .gambar{
   transition: 700ms;
 }
+
 .gambar:hover{
   transform: scale(1.1);
   border-radius: 10px;
