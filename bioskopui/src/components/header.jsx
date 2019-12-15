@@ -14,7 +14,7 @@ import {
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {FaCartArrowDown} from 'react-icons/fa'
-dsaasds
+
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
