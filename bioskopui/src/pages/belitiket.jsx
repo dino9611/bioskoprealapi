@@ -4,6 +4,7 @@ import Axios from 'axios'
 import { APIURL } from '../support/ApiUrl';
 import {Redirect} from 'react-router-dom'
 import {Modal,ModalBody,ModalFooter} from 'reactstrap'
+import {CartAction} from '../redux/actions'
 import Numeral from 'numeral'
 
 class Belitiket extends Component {
@@ -85,30 +86,77 @@ class Belitiket extends Component {
             jadwal,
             bayar
         }
-        Axios.post(`${APIURL}orders`,dataorders)
-        .then((res)=>{
-            console.log(res.data.id)
-            var dataordersdetail=[]
-            pilihan.forEach((val)=>{
-                dataordersdetail.push({
-                    orderId:res.data.id,
-                    seat:val.seat,
-                    row:val.row
+        Axios.get(`${APIURL}orders`,{
+            params:{
+                userId,
+                movieId,
+                bayar
+            }
+        }).then((res)=>{
+            if(res.data.length){
+                console.log(res.data[0].id)
+                var dataordersdetail=[]
+                pilihan.forEach((val)=>{
+                    dataordersdetail.push({
+                        orderId:res.data[0].id,
+                        seat:val.seat,
+                        row:val.row
+                    })
                 })
-            })
-            console.log(dataordersdetail)
-            var dataordersdetail2=[]
-            dataordersdetail.forEach((val)=>{
-                dataordersdetail2.push(Axios.post(`${APIURL}ordersDetails`,val))
-            })
-            Axios.all(dataordersdetail2)
-            .then((res1)=>{
-                console.log(res1)
-                this.setState({openmodalcart:true})
-            }).catch((err)=>{
-                console.log(err)
-            })
-        }).catch((err)=>{
+                console.log(dataordersdetail)
+                var dataordersdetail2=[]
+                dataordersdetail.forEach((val)=>{
+                    dataordersdetail2.push(Axios.post(`${APIURL}ordersDetails`,val))
+                })
+                console.log(dataordersdetail2)
+                Axios.all(dataordersdetail2)
+                .then((res1)=>{
+                    console.log(res1)
+                    Axios.get(`${APIURL}orders?userId=${this.props.UserId}&bayar=false`)
+                    .then(res3=>{
+                        this.props.CartAction(res3.data.length)
+                        this.setState({openmodalcart:true})
+                    }).catch(err=>{
+                        console.log(err)
+                    })
+                }).catch((err)=>{
+                    console.log(err)
+                })
+            }else{
+                Axios.post(`${APIURL}orders`,dataorders)
+                .then((res)=>{
+                    console.log(res.data.id)
+                    var dataordersdetail=[]
+                    pilihan.forEach((val)=>{
+                        dataordersdetail.push({
+                            orderId:res.data.id,
+                            seat:val.seat,
+                            row:val.row
+                        })
+                    })
+                    console.log(dataordersdetail)
+                    var dataordersdetail2=[]
+                    dataordersdetail.forEach((val)=>{
+                        dataordersdetail2.push(Axios.post(`${APIURL}ordersDetails`,val))
+                    })
+                    Axios.all(dataordersdetail2)
+                    .then((res1)=>{
+                        console.log(res1)
+                        Axios.get(`${APIURL}orders?userId=${this.props.UserId}&bayar=false`)
+                        .then(res3=>{
+                            this.props.CartAction(res3.data.length)
+                            this.setState({openmodalcart:true})
+                        }).catch(err=>{
+                          console.log(err)
+                        })
+                    }).catch((err)=>{
+                        console.log(err)
+                    })
+                }).catch((err)=>{
+                    console.log(err)
+                })
+            }
+        }).catch(err=>{
             console.log(err)
         })
     }
@@ -251,7 +299,7 @@ const MapstateToprops=(state)=>{
         UserId:state.Auth.id
     }
 }
-export default connect(MapstateToprops) (Belitiket);
+export default connect(MapstateToprops,{CartAction}) (Belitiket);
 
 
 

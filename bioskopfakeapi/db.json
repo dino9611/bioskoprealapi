@@ -17,6 +17,12 @@
       "username": "jamal",
       "password": "1234",
       "role": "user"
+    },
+    {
+      "username": "leroy",
+      "password": "1234",
+      "role": "user",
+      "id": 4
     }
   ],
   "studios": [
@@ -34,6 +40,11 @@
       "id": 3,
       "nama": "Studio 3",
       "jumlahKursi": 200
+    },
+    {
+      "nama": "Studio 4",
+      "jumlahKursi": 260,
+      "id": 4
     }
   ],
   "movies": [
@@ -154,6 +165,94 @@
       "jadwal": 12,
       "bayar": true,
       "id": 8
+    },
+    {
+      "userId": 3,
+      "movieId": 4,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 9
+    },
+    {
+      "userId": 3,
+      "movieId": 2,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 10
+    },
+    {
+      "userId": 3,
+      "movieId": 4,
+      "totalharga": 50000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 11
+    },
+    {
+      "userId": 3,
+      "movieId": 4,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 12
+    },
+    {
+      "userId": 3,
+      "movieId": 2,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 13
+    },
+    {
+      "userId": 3,
+      "movieId": 2,
+      "totalharga": 50000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 14
+    },
+    {
+      "userId": 3,
+      "movieId": 2,
+      "totalharga": 50000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 15
+    },
+    {
+      "userId": 3,
+      "movieId": 4,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 16
+    },
+    {
+      "userId": 3,
+      "movieId": 4,
+      "totalharga": 50000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 17
+    },
+    {
+      "userId": 3,
+      "movieId": 2,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 18
+    },
+    {
+      "userId": 3,
+      "movieId": 4,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": true,
+      "id": 19
     }
   ],
   "ordersDetails": [
@@ -246,20 +345,188 @@
       "seat": 0,
       "row": 0,
       "id": 15
+    },
+    {
+      "orderId": 9,
+      "seat": 7,
+      "row": 0,
+      "id": 16
+    },
+    {
+      "orderId": 10,
+      "seat": 10,
+      "row": 0,
+      "id": 17
+    },
+    {
+      "orderId": 11,
+      "seat": 9,
+      "row": 0,
+      "id": 18
+    },
+    {
+      "orderId": 11,
+      "seat": 10,
+      "row": 0,
+      "id": 19
+    },
+    {
+      "orderId": 12,
+      "seat": 11,
+      "row": 0,
+      "id": 20
+    },
+    {
+      "orderId": 13,
+      "seat": 11,
+      "row": 2,
+      "id": 21
+    },
+    {
+      "orderId": 14,
+      "seat": 0,
+      "row": 0,
+      "id": 22
+    },
+    {
+      "orderId": 14,
+      "seat": 1,
+      "row": 0,
+      "id": 23
+    },
+    {
+      "orderId": 15,
+      "seat": 0,
+      "row": 1,
+      "id": 24
+    },
+    {
+      "orderId": 15,
+      "seat": 1,
+      "row": 1,
+      "id": 25
+    },
+    {
+      "orderId": 16,
+      "seat": 11,
+      "row": 5,
+      "id": 26
+    },
+    {
+      "orderId": 17,
+      "seat": 12,
+      "row": 0,
+      "id": 27
+    },
+    {
+      "orderId": 17,
+      "seat": 13,
+      "row": 0,
+      "id": 28
+    },
+    {
+      "orderId": 17,
+      "seat": 8,
+      "row": 1,
+      "id": 29
+    },
+    {
+      "orderId": 17,
+      "seat": 9,
+      "row": 1,
+      "id": 30
+    },
+    {
+      "orderId": 17,
+      "seat": 14,
+      "row": 0,
+      "id": 31
+    },
+    {
+      "orderId": 17,
+      "seat": 15,
+      "row": 2,
+      "id": 32
+    },
+    {
+      "orderId": 18,
+      "seat": 5,
+      "row": 0,
+      "id": 33
+    },
+    {
+      "orderId": 18,
+      "seat": 12,
+      "row": 1,
+      "id": 34
+    },
+    {
+      "orderId": 18,
+      "seat": 11,
+      "row": 1,
+      "id": 35
+    },
+    {
+      "orderId": 19,
+      "seat": 11,
+      "row": 1,
+      "id": 36
     }
   ],
   "transactions": [
     {
       "userId": 3,
       "totalharga": 275000,
-      "today": "14/12/2019",
+      "tanggal": "14/12/2019",
       "id": 1
     },
     {
       "userId": 2,
       "totalharga": 100000,
-      "today": "14/12/2019",
+      "tanggal": "14/12/2019",
       "id": 2
+    },
+    {
+      "userId": 3,
+      "totalharga": 50000,
+      "tanggal": "15/12/2019",
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "totalharga": 75000,
+      "tanggal": "16/12/2019",
+      "id": 4
+    },
+    {
+      "userId": 3,
+      "totalharga": 25000,
+      "tanggal": "16/12/2019",
+      "id": 5
+    },
+    {
+      "userId": 3,
+      "totalharga": 100000,
+      "tanggal": "16/12/2019",
+      "id": 6
+    },
+    {
+      "userId": 3,
+      "totalharga": 25000,
+      "tanggal": "18/12/2019",
+      "id": 7
+    },
+    {
+      "userId": 3,
+      "totalharga": 225000,
+      "tanggal": "19/12/2019",
+      "id": 8
+    },
+    {
+      "userId": 3,
+      "totalharga": 25000,
+      "tanggal": "19/12/2019",
+      "id": 9
     }
   ],
   "transactionsDetails": [
@@ -318,6 +585,83 @@
       "titlefilm": "Darah Daging",
       "qty": 2,
       "id": 8
+    },
+    {
+      "transactionId": 3,
+      "orderId": 9,
+      "titlefilm": "Jumanji: The Next Level",
+      "qty": 1,
+      "id": 9
+    },
+    {
+      "transactionId": 3,
+      "orderId": 10,
+      "titlefilm": "Last Christmas",
+      "qty": 1,
+      "id": 10
+    },
+    {
+      "transactionId": 4,
+      "orderId": 11,
+      "titlefilm": "Jumanji: The Next Level",
+      "qty": 2,
+      "id": 11
+    },
+    {
+      "transactionId": 4,
+      "orderId": 12,
+      "titlefilm": "Jumanji: The Next Level",
+      "qty": 1,
+      "id": 12
+    },
+    {
+      "transactionId": 5,
+      "orderId": 13,
+      "titlefilm": "Last Christmas",
+      "qty": 1,
+      "id": 13
+    },
+    {
+      "transactionId": 6,
+      "orderId": 14,
+      "titlefilm": "Last Christmas",
+      "qty": 2,
+      "id": 14
+    },
+    {
+      "transactionId": 6,
+      "orderId": 15,
+      "titlefilm": "Last Christmas",
+      "qty": 2,
+      "id": 15
+    },
+    {
+      "transactionId": 7,
+      "orderId": 16,
+      "titlefilm": "Jumanji: The Next Level",
+      "qty": 1,
+      "id": 16
+    },
+    {
+      "transactionId": 8,
+      "orderId": 17,
+      "titlefilm": "Jumanji: The Next Level",
+      "qty": 6,
+      "id": 17
+    },
+    {
+      "transactionId": 8,
+      "orderId": 18,
+      "titlefilm": "Last Christmas",
+      "qty": 3,
+      "id": 18
+    },
+    {
+      "transactionId": 9,
+      "orderId": 19,
+      "titlefilm": "Jumanji: The Next Level",
+      "qty": 1,
+      "id": 19
     }
   ]
 }

@@ -16,21 +16,6 @@ class Login extends Component {
         var username=this.refs.username.value
         var password=this.refs.password.value
         this.props.Loginthunk(username,password)
-        // this.setState({loading:true})
-        //pake redux biasa codenya dibawah
-        // Axios.get(`${APIURL}users?username=${username}&password=${password}`)
-        // .then(res=>{
-        //     if(res.data.length){
-        //         localStorage.setItem('dino',res.data[0].id)
-        //         this.props.LoginSuccessAction(res.data[0])
-        //     }else{
-        //         this.setState({error:'salah masukin pass woy'})
-        //     }
-        //     this.setState({loading:false})
-        // }).catch((err)=>{
-        //     console.log(err)
-        //     this.setState({loading:false})
-        // })
     }
 
     render() {
@@ -69,7 +54,7 @@ class Login extends Component {
                             }
                         </div>
                         <div className='mt-2'>
-                            belum ada akun ?<Link to={'/'}> Register </Link> aja mbak/mas
+                            belum ada akun ?<Link to={'/register'}> Register </Link> aja mbak/mas
                         </div>
                     </div>
                 </div>

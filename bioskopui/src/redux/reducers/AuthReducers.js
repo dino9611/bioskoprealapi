@@ -18,6 +18,8 @@ export default (state=INITIAL_STATE,action)=>{
             return{...state,cart:action.payload}
         case 'LOGIN_ERROR':
             return{...state,error:action.payload,loading:false}
+        case 'LOGOUT':
+            return INITIAL_STATE
         default:
             return state
     }

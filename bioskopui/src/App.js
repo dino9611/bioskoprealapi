@@ -4,7 +4,9 @@ import Home from './pages/Home'
 import './App.css';
 import {Switch,Route} from 'react-router-dom'
 import ManageAdmin from './pages/manageadmin'
+import ManageStudio from './pages/manageStudio'
 import Login from './pages/login'
+import Register from './pages/register'
 import Moviedetail from './pages/movie-detail'
 import Belitiket from './pages/belitiket'
 import Cart from './pages/cart'
@@ -51,8 +53,10 @@ class App extends Component{
           <Route path='/moviedetail/:id' component={Moviedetail} exact />
           <Route path='/belitiket' component={Belitiket} exact/>
           <Route path='/cart' component={Cart} exact/>
+          <Route path='/managestudio' component={ManageStudio} exact/>
           <Route path='/history' component={History} exact/>
           <Route path={'/login'} exact component={Login}/>
+          <Route path={'/register'} exact component={Register}/>
         </Switch>
       </div>
     );

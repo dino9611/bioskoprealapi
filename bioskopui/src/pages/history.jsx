@@ -52,7 +52,7 @@ class History extends Component{
             return(
                 <tr key={index}>
                     <td style={{width:100}}>{index+1}</td>
-                    <td style={{width:100}}>{val.today}</td>
+                    <td style={{width:100}}>{val.tanggal}</td>
                     <td style={{width:100}}>{'Rp.'+Numeral(val.totalharga).format('0,0.00') }</td>
                     <td style={{width:100}}><button className='btn btn-primary ' onClick={()=>this.setState({ indexdetail:index,modaldetail:true})}>Detail</button></td>
                 </tr>

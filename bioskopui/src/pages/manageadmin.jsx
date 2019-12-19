@@ -4,7 +4,6 @@ import {Table,TableBody,TableHead,TableCell,TableRow} from '@material-ui/core'
 import { APIURL } from '../support/ApiUrl';
 import {Modal,ModalBody,ModalFooter,ModalHeader} from 'reactstrap'
 import Fade from 'react-reveal/Fade'
-import {Route,Link,Switch} from 'react-router-dom'
 
 
 
@@ -12,6 +11,7 @@ import {Route,Link,Switch} from 'react-router-dom'
 class ManageAdmin extends Component {
     state = { 
         datafilm:[],
+        datastudio:[],
         readmoreselected:-1,
         modaladd:false,
         modaledit:false,
@@ -22,10 +22,39 @@ class ManageAdmin extends Component {
     componentDidMount(){
         Axios.get(`${APIURL}movies`)
         .then((res)=>{
-            // console.log(res.data)
-            this.setState({datafilm:res.data})
+            Axios.get(`${APIURL}studios`)
+            .then(res1=>{
+                document.addEventListener('scroll', () => {
+                    var isTop = window.scrollY;
+                    if(isTop<10){
+                        document.title='pak tarno'
+                    }else{
+                        document.title='bobi'
+                    }
+                })
+                this.setState({
+                    datafilm:res.data,
+                    datastudio:res1.data
+                })
+            }).catch(err=>{
+                console.log(err)
+            })
         }).catch((err)=>{
             console.log(err)
+        })
+    }
+    componentDidUpdate(){
+        console.log('masuk didupdate')
+    }
+    componentWillUnmount(){
+        console.log('bersih besih')
+        document.removeEventListener('scroll', () => {
+            var isTop = window.scrollY;
+            if(isTop<10){
+                document.title='pak tarno'
+            }else{
+                document.title='bobi'
+            }
         })
     }
     onUpdateDataclick=()=>{
@@ -254,9 +283,13 @@ class ManageAdmin extends Component {
                         </div>
                         <input type="text" ref='trailer' placeholder='trailer'className='form-control mt-2' />
                         <select ref='studio' className='form-control mt-2'>
-                            <option value="1">Studio 1</option>    
-                            <option value="2">Studio 2</option>    
-                            <option value="3">Studio 3</option>    
+                            {
+                                this.state.datastudio.map((val)=>{
+                                    return(
+                                        <option value={val.id}>{val.nama}</option>    
+                                    )
+                                })
+                            }   
                         </select> 
                         <input type="text"  ref='sutradara' placeholder='sutradara' className='form-control mt-2'/>
                         <input type="number"  ref='durasi' placeholder='durasi' className='form-control mt-2'/>
@@ -288,40 +321,10 @@ class ManageAdmin extends Component {
                         </TableBody>
                     </Table>
                 </Fade>
-                <div>
-                    <Link to='/manageadmin/test'>test2</Link>
-                </div>
-                <div>
-                    
-                        <Switch>
-                            <Route to='/manageadmin' component={test} exact />
-                            <Route to='/manageadmin/:test' component={test2}/>
-                        </Switch>
-                    
-                </div>
             </div>
         );
     }
 }
-class test extends Component {
-    state = {  }
-    render() { 
-        return (
-            <div>
-                test1
-            </div>
-          );
-    }
-}
-class test2 extends Component {
-    state = {  }
-    render() { 
-        return (
-            <div>
-                {this.props.match.params}
-            </div>
-          );
-    }
-}
+
  
 export default ManageAdmin;

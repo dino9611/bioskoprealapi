@@ -3,7 +3,9 @@ import Axios from 'axios'
 import {connect} from 'react-redux'
 import {Table,ModalHeader,ModalBody,ModalFooter,Modal} from 'reactstrap'
 import {APIURL} from './../support/ApiUrl'
+import {CartAction} from '../redux/actions'
 import Numeral from 'numeral'
+
 
 class Cart extends Component {
     state = {
@@ -14,6 +16,9 @@ class Cart extends Component {
     }
 
     componentDidMount(){
+      this.ongetdata()
+    }
+    ongetdata=()=>{
         Axios.get(`${APIURL}orders?_expand=movie&userId=${this.props.UserId}&bayar=false`)
         .then((res)=>{
             var datacart=res.data
@@ -85,7 +90,14 @@ class Cart extends Component {
                 Axios.all(transactionsdetails2)
                 .then((res2)=>{
                     console.log(res2)
-                    // this.setState({openmodalcart:true})
+                    Axios.get(`${APIURL}orders?userId=${this.props.UserId}&bayar=false`)
+                    .then(res3=>{
+                        this.props.CartAction(res3.data.length)
+                        this.ongetdata()
+                    }).catch(err=>{
+                      console.log(err)
+                    })
+
                 }).catch((err)=>{
                     console.log(err)
                 })
@@ -95,31 +107,6 @@ class Cart extends Component {
         }).catch(err=>{
 
         })
-        // .then((res)=>{
-        //     console.log(res.data.id)
-        //     var dataordersdetail=[]
-        //     pilihan.forEach((val)=>{
-        //         dataordersdetail.push({
-        //             orderId:res.data.id,
-        //             seat:val.seat,
-        //             row:val.row
-        //         })
-        //     })
-        //     console.log(dataordersdetail)
-        //     var dataordersdetail2=[]
-        //     dataordersdetail.forEach((val)=>{
-        //         dataordersdetail2.push(Axios.post(`${APIURL}ordersDetails`,val))
-        //     })
-        //     Axios.all(dataordersdetail2)
-        //     .then((res1)=>{
-        //         console.log(res1)
-        //         this.setState({openmodalcart:true})
-        //     }).catch((err)=>{
-        //         console.log(err)
-        //     })
-        // }).catch((err)=>{
-        //     console.log(err)
-        // })
     }
     rendertotalharga=()=>{
         var harga=0
@@ -233,4 +220,4 @@ const MapstateToprops=(state)=>{
         UserId:state.Auth.id
     }
 }
-export default connect(MapstateToprops) (Cart);
+export default connect(MapstateToprops,{CartAction}) (Cart);
