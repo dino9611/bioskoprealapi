@@ -5,7 +5,8 @@ const INITIAL_STATE={
     login:false,
     error:'',
     loading:false,
-    cart:0
+    cart:0,
+    roleid:0
 }
 
 export default (state=INITIAL_STATE,action)=>{

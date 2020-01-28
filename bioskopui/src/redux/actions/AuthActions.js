@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import { APIURL } from '../../support/ApiUrl'
+import { APIURL,apiRealUrl } from '../../support/ApiUrl'
 
 export const LoginSuccessAction=(datauser)=>{
     return{
@@ -22,15 +22,16 @@ export const LogOutAction=()=>{
 export const Loginthunk=(username,password)=>{
     return(dispatch)=>{
         dispatch({type:'LOGIN_LOADING'})
-        Axios.get(`${APIURL}users?username=${username}&password=${password}`)
+        Axios.get(`${apiRealUrl}user/authlog?username=${username}&password=${password}`)
         .then((res)=>{
-            if(res.data.length){
-                localStorage.setItem('dino',res.data[0].id)
-                dispatch(LoginSuccessAction(res.data[0]))
-                Axios.get(`${APIURL}orders?userId=${res.data[0].id}&bayar=false`)
-                .then(res=>{
-                  dispatch({type:'CART',payload:res.data.length})
-                })
+            if(res.data.result.length){
+                localStorage.setItem('dino',res.data.result[0].id)
+                localStorage.setItem('token',res.data.token)
+                dispatch(LoginSuccessAction(res.data.result[0]))
+                // Axios.get(`${APIURL}orders?userId=${res.data[0].id}&bayar=false`)
+                // .then(res=>{
+                //   dispatch({type:'CART',payload:res.data.length})
+                // })
             }else{
                 dispatch({type:'LOGIN_ERROR',payload:'Salah masukin Password'})
             }
