@@ -28,6 +28,7 @@ class Register extends Component {
         if(password!==confirmpassword){
             this.setState({error:'confirm dan pass harus sama'})
         }else{
+            // cek data
             Axios.get(`${APIURL}users?username=${username}&password=${password}`)
             .then(res=>{
                 if(res.data.length){

@@ -26,19 +26,25 @@ class Belitiket extends Component {
     onJamchange=()=>{
         var studioId=this.props.location.state.studioId
         var movieId=this.props.location.state.id
+        // get jumlah seat di studio
         Axios.get(`${APIURL}studios/${studioId}`)
         .then((res1)=>{
+            // get data orders movie utnuk diambil idnya
             Axios.get(`${APIURL}orders?movieId=${movieId}&jadwal=${this.state.jam}`)
             .then((res2)=>{
                 var arrAxios=[]
+                // get data ordersdetail untuk memilih berapa kursi yang sudah dibooking karena id yang berbeda maka 
+                // maka dilakukan get data dengan looping cara looping axios caranya seperti dibawah 
                 res2.data.forEach((val)=>{
                     arrAxios.push(Axios.get(`${APIURL}ordersDetails?orderId=${val.id}`))
                 })
                 var arrAxios2=[]
                 console.log(arrAxios)
+                // setelah dilooping axios.getnya maka untuk mendapatkan data dilakukan dengan cara axios.all axios.all sama saja seperti promise.all yaitu fitur yang digunakan untuk melooping promise
                 Axios.all(arrAxios)
                 .then((res3)=>{
                     console.log(res3)
+                    // data yang didapatkanpun bentuknya adaalh array bukan object oleh karena itu haru dilooping untuk mendapatkan kursi yang sudah dibooked
                     res3.forEach((val)=>{
                         arrAxios2.push(...val.data)
                     })
@@ -86,6 +92,7 @@ class Belitiket extends Component {
             jadwal,
             bayar
         }
+        // cek data orders apakah film ada dicart atau tidak 
         Axios.get(`${APIURL}orders`,{
             params:{
                 userId,
@@ -94,6 +101,7 @@ class Belitiket extends Component {
             }
         }).then((res)=>{
             if(res.data.length){
+                // jika masuk sini maka film sudah masuk cart dan yang ditambah adalah ordersdetailnya saja
                 console.log(res.data[0].id)
                 var dataordersdetail=[]
                 pilihan.forEach((val)=>{
@@ -106,12 +114,15 @@ class Belitiket extends Component {
                 console.log(dataordersdetail)
                 var dataordersdetail2=[]
                 dataordersdetail.forEach((val)=>{
+                    // menambahkan ordersdetail
                     dataordersdetail2.push(Axios.post(`${APIURL}ordersDetails`,val))
                 })
                 console.log(dataordersdetail2)
+                // untuk melooping promise
                 Axios.all(dataordersdetail2)
                 .then((res1)=>{
                     console.log(res1)
+                    // get data jumlah cart untuk dimasukkan ke redux
                     Axios.get(`${APIURL}orders?userId=${this.props.UserId}&bayar=false`)
                     .then(res3=>{
                         this.props.CartAction(res3.data.length)
@@ -123,6 +134,7 @@ class Belitiket extends Component {
                     console.log(err)
                 })
             }else{
+                // membuat orders baru
                 Axios.post(`${APIURL}orders`,dataorders)
                 .then((res)=>{
                     console.log(res.data.id)
@@ -137,11 +149,14 @@ class Belitiket extends Component {
                     console.log(dataordersdetail)
                     var dataordersdetail2=[]
                     dataordersdetail.forEach((val)=>{
+                        // post orders details
                         dataordersdetail2.push(Axios.post(`${APIURL}ordersDetails`,val))
                     })
+                    // menjalankan rentetan promise 
                     Axios.all(dataordersdetail2)
                     .then((res1)=>{
                         console.log(res1)
+                        // get data cart
                         Axios.get(`${APIURL}orders?userId=${this.props.UserId}&bayar=false`)
                         .then(res3=>{
                             this.props.CartAction(res3.data.length)

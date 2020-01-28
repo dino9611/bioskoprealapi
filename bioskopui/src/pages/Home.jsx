@@ -8,6 +8,7 @@ class Home extends Component {
         dataMovies:[]
     }
     componentDidMount(){
+        // mendapatkan data movies
         Axios.get(`${url}movies`)
         .then((res)=>{
             this.setState({dataMovies:res.data})

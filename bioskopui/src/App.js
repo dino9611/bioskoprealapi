@@ -24,6 +24,7 @@ class App extends Component{
 
   componentDidMount(){
     var id=localStorage.getItem('dino')
+    console.log('lewat')
     Axios.get(`${APIURL}users/${id}`)
     .then((res)=>{
       this.props.LoginSuccessAction(res.data)

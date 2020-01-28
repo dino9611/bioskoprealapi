@@ -39,7 +39,6 @@ class Login extends Component {
                             <div className="alert alert-danger mt-2">
                                 {this.props.Auth.error} <span onClick={this.props.Login_error} className='float-right font-weight-bold'>X</span>
                             </div>
-                    
                         }
                         <div className='mt-4'>
                             {this.props.Auth.loading?
