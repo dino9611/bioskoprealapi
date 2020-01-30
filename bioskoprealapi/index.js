@@ -17,11 +17,12 @@ app.get('/',(req,res)=>{
     return res.status(200).send('<h1>Selamat datang di api ini</h1>')
 })
 
-const {Authrouter}=require('./router')
+const {Authrouter,Movierouter}=require('./router')
 
 
 
 app.use('/user',Authrouter)
+app.use('/movie',Movierouter)
 
 
 
